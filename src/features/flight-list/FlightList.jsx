@@ -74,7 +74,7 @@ const FlightList = ({ flights, isPromoCodeEnabled }) => {
               <Card>
                 <Row gutter={12}>
                   {Array.from(Array(3).keys()).map((index) => (
-                    <Col sm={8}>
+                    <Col key={index} sm={8}>
                       <PriceSubcategory
                         data={flight.fareCategories[selectedTicketType].subcategories[index]}
                         isPromoCodeEnabled={isPromoCodeEnabled}
