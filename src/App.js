@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ConfigProvider } from "antd";
+import FlightSearch from "./pages/flight-search/FlightSearch";
+import FlightList from "./pages/flight-list/FlightList";
+import Error from "./pages/error/Error";
+import Success from "./pages/success/Success";
+import "./app.css";
+
+import "./fonts/MuseoSans-100.otf";
+import "./fonts/MuseoSans-300.otf";
+import "./fonts/MuseoSans_500.otf";
+import "./fonts/MuseoSans_700.otf";
+import "./fonts/MuseoSans_900.otf";
+
+import theme from "./theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider theme={theme}>
+      <Router>
+        <Routes>
+          <Route path="/flights" element={<FlightList />} />
+          <Route path="/error" element={<Error />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/" element={<FlightSearch />} />
+        </Routes>
+      </Router>
+    </ConfigProvider>
   );
 }
 
