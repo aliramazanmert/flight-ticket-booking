@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col } from "antd";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import FlightDetailCard from "../flight-detail-card/FlightDetailCard";
 import PriceCard from "../price-card/PriceCard";
@@ -90,6 +91,16 @@ const FlightList = ({ flights, isPromoCodeEnabled }) => {
     );
   };
   return <S.Container value={selected}>{flights.map(renderFlightItem)}</S.Container>;
+};
+
+FlightList.propTypes = {
+  flights: PropTypes.array,
+  isPromoCodeEnabled: PropTypes.bool,
+};
+
+FlightList.defaultProps = {
+  flights: [],
+  isPromoCodeEnabled: false,
 };
 
 export default FlightList;

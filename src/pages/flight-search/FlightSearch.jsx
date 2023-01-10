@@ -7,6 +7,12 @@ import FlightSearchFeature from "../../features/flight-search/FlightSearch";
 import { findFlightByCities } from "../../shared/utils";
 import * as S from "./styles";
 
+const initialValues = {
+  originCity: localStorage.getItem("latestOrigin") || "",
+  destinationCity: localStorage.getItem("latestDestination") || "",
+  numberOfPassengers: 1,
+};
+
 const FlightSearch = () => {
   const navigate = useNavigate();
   const [modal, contextHolder] = Modal.useModal();
@@ -18,6 +24,8 @@ const FlightSearch = () => {
     });
 
     if (isFlightFound) {
+      localStorage.setItem("latestOrigin", values.originCity);
+      localStorage.setItem("latestDestination", values.destinationCity);
       navigate({
         pathname: "/flights",
         search: new URLSearchParams(values).toString(),
@@ -38,6 +46,7 @@ const FlightSearch = () => {
       });
     }
   };
+  console.log(initialValues);
 
   return (
     <S.Container>
@@ -45,7 +54,7 @@ const FlightSearch = () => {
       <div>
         <S.Title>Merhaba</S.Title>
         <S.Description>Nereyi keşfetmek istersiniz?</S.Description>
-        <FlightSearchFeature onSearchFlight={handleSearchFlight} />
+        <FlightSearchFeature initialValues={initialValues} onSearchFlight={handleSearchFlight} />
       </div>
     </S.Container>
   );

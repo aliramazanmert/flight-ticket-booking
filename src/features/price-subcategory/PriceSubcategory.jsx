@@ -20,7 +20,7 @@ const PriceSubcategory = ({ data, isPromoCodeEnabled, onSelectFlight }) => {
   const isDisabled = isPromoCodeEnabled && brandCode !== BRAND_CODES.ECO_FLY;
 
   const handleSelectFlight = () => {
-    onSelectFlight(data);
+    onSelectFlight({ ...data, price: { ...data.price, amount: getPrice() } });
   };
 
   return (

@@ -22,12 +22,14 @@ const FlightSearch = ({ initialValues, onSearchFlight }) => {
         <S.Container>
           <Input
             name="originCity"
+            value={values.originCity}
             onChange={handleChange}
             prefix={<FontAwesomeIcon size="lg" icon={faPlaneDeparture} />}
             placeholder="Nereden"
           />
           <Input
             name="destinationCity"
+            value={values.destinationCity}
             onChange={handleChange}
             prefix={<FontAwesomeIcon size="lg" icon={faPlaneArrival} />}
             placeholder="Nereye"
